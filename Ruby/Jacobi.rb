@@ -153,10 +153,10 @@ class Jacobi
 			line = getAdjacency(m[i], i)
 
 			for j in 0...line.length do
-				sum += line[j]
+				sum += line[j].abs
 			end
 
-			if m[i][i] <= sum
+			if m[i][i].abs <= sum
 				return false
 			end
 
@@ -343,5 +343,8 @@ else
 end
 
 j = Jacobi.new($e,$a, $r, $c)
+
+#j = Jacobi.new(0.0001, [[10, 2, -3, 2], [2, -15, 3, -2], [1, -3, 20, 2], [2, 2, -1, 30]], [32, -59, -38, 160], [0,0,0,0])
+
 j.mountSolutions
 j.showSolutions
