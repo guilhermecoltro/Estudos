@@ -128,7 +128,7 @@ class Jacobi
 		print "K\t"
 
 		for x in 0...@solutions[0].length do
-			print "         X"+x.to_s+"       \t"
+			print "         X"+(x+1).to_s+"       \t"
 		end
 
 		print "Erro\n"
