@@ -1,4 +1,4 @@
-class Jacobi
+class Seidel
 	
 	attr_accessor :error
 	attr_accessor :matrix
@@ -78,7 +78,11 @@ class Jacobi
 				i+=1
 			end
 
-			value += (e*@solutions[index][i])
+			if @solutions[index+1][i].nil?
+				value += (e*@solutions[index][i])
+			else
+				value += (e*@solutions[index+1][i])
+			end
 
 			i+=1
 		end
@@ -178,7 +182,7 @@ $e = 0
 def ptInput
 
 	begin
-		puts "CALCULO DE SISTEMAS LINEARES UTILIZANDO O METODO DE GAUSS-JACOBI"
+		puts "CALCULO DE SISTEMAS LINEARES UTILIZANDO O METODO DE GAUSS-SEIDEL"
 		puts " "
 		
 		puts "*** Criacao da Matriz a partir do Sistema ***"
@@ -260,7 +264,7 @@ end
 def engInput
 	
 	begin
-		puts "CALCULATION OF LINEAR SYSTEMS USING GAUSS-JACOBI METHOD"
+		puts "CALCULATION OF LINEAR SYSTEMS USING GAUSS-SEIDEL METHOD"
 		puts " "
 		
 		puts "*** Creation of Matrix from System ***"
@@ -354,9 +358,9 @@ else
 	ptInput
 end
 
-j = Jacobi.new($e,$a, $r, $c)
+s = Seidel.new($e,$a, $r, $c)
 
-#j = Jacobi.new(0.0001, [[10, 2, -3, 2], [2, -15, 3, -2], [1, -3, 20, 2], [2, 2, -1, 30]], [32, -59, -38, 160], [0,0,0,0])
+#s = Seidel.new(0.0001, [[10, 2, -3, 2], [2, -15, 3, -2], [1, -3, 20, 2], [2, 2, -1, 30]], [32, -59, -38, 160], [0,0,0,0])
 
-j.mountSolutions
-j.showSolutions
+s.mountSolutions
+s.showSolutions
